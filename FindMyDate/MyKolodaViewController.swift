@@ -28,6 +28,7 @@ class MyKolodaViewController: UIViewController {
         
         kolodaView.dataSource = self
         kolodaView.delegate = self// as? KolodaViewDelegate
+
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         fetchPhotos() {
             (_: [FirebaseUser]) in
@@ -77,7 +78,7 @@ class MyKolodaViewController: UIViewController {
     
     @IBAction func rightButtonTapped(_ sender: Any) {
         
-        var currentIndex = (kolodaView.currentCardIndex )
+        let currentIndex = (kolodaView.currentCardIndex )
         let Storyboard = UIStoryboard(name: "Main", bundle: nil)
         let DvC = Storyboard.instantiateViewController(withIdentifier: "DateViewController") as! DateViewController
         DvC.user = self.users[currentIndex]
@@ -170,9 +171,12 @@ extension MyKolodaViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let photoView = Bundle.main.loadNibNamed("KolodaPhotoView", owner: self, options: nil)?[0] as? KolodaPhotoView
-        //var photoView: KolodaPhotoView?
+        
         let user = users[Int(index)]
         
+        photoView?.layer.cornerRadius = 10;
+        photoView?.layer.masksToBounds = true;
+
         let profilePicRef = self.storageRef.child(user.uid + "/profile_pic.jpg")
         profilePicRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if error != nil {

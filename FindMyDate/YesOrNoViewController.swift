@@ -28,9 +28,7 @@ class YesOrNoViewController: UIViewController {
         datesRef.child(Auth.auth().currentUser!.uid).child(match.suitorsUid).updateChildValues(["Accepted":childUpdates])
         self.navigationController?.popViewController(animated: true)
     }
-//    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.user = FirebaseUser(authData: Auth.auth().currentUser!)

@@ -12,5 +12,5 @@ class AcceptedDateView: UIView {
 
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var matchName: UILabel!
-    
+    @IBOutlet weak var suitorPic: UIImageView!
 }

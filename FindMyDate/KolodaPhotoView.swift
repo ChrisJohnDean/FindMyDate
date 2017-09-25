@@ -28,7 +28,6 @@ extension UIImageView {
 }
 
 
-
 //extension UIImageView {
 //    public func imageFromUrl(_ urlString: String) {
 //        if let url = URL(string: urlString) {
@@ -50,5 +49,8 @@ class KolodaPhotoView: UIView {
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var photoTitle: UILabel!
     
+    
+//    photoView?.layer.cornerRadius = 10;
+//    photoView?.layer.masksToBounds = true;
     
 }

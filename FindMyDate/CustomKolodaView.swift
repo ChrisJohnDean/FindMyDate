@@ -11,9 +11,10 @@ let defaultTopOffset: CGFloat = 20
 let defaultHorizontalOffset: CGFloat = 10
 let defaultHeightRatio: CGFloat = 1.25
 let backgroundCardHorizontalMarginMultiplier: CGFloat = 0.25
-let backgroundCardScalePercent: CGFloat = 1.5
+let backgroundCardScalePercent: CGFloat = 1.50
 
 class CustomKolodaView: KolodaView {
+    
     
     override func frameForCard(at index: Int) -> CGRect {
         if index == 0 {
@@ -35,3 +36,4 @@ class CustomKolodaView: KolodaView {
     }
     
 }
+
