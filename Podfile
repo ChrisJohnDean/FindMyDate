@@ -6,11 +6,11 @@ target 'FindMyDate' do
   use_frameworks!
 
   # Pods for FindMyDate
-	pod 'Firebase/Core'
-    	pod 'Firebase/Auth'
-	pod 'Firebase/Database'
-	pod 'Firebase/Storage'
-	pod "Koloda"
+	pod 'FirebaseCore'
+    pod 'FirebaseAuth'
+	pod 'FirebaseDatabase'
+	pod 'FirebaseStorage'
+	pod 'Koloda'
     
     pod 'FBSDKLoginKit’
     pod 'FBSDKCoreKit’

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class DateViewController: UIViewController {
 
@@ -46,7 +47,7 @@ class DateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func swipeAction(swipe: UISwipeGestureRecognizer) -> Void {
+    @objc func swipeAction(swipe: UISwipeGestureRecognizer) -> Void {
         if swipe.direction == UISwipeGestureRecognizerDirection.right {
             place = location.text
             print(place)

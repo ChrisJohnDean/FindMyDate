@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 import FBSDKCoreKit
 import FBSDKLoginKit
 
@@ -32,18 +32,38 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("Did log out of facebook")
     }
     
+    /*
+     let serialQueue = DispatchQueue(label: "com.queue.Serial")
+     for i in 1...5 {
+     serialQueue.async {
+     
+     if Thread.isMainThread{
+     print("task running in main thread")
+     }else{
+     print("task running in background thread")
+     }
+     let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
+     let _ = try! Data(contentsOf: imgURL)
+     print("\(i) completed downloading")
+     }
+     }
+     */
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
-            print(error)
+             print(error)
+            print("0")
             return
         }
         else{
             print(result)
+            print("1")
             fbLoginSuccess = true
         }
         
         if (FBSDKAccessToken.current() != nil && fbLoginSuccess == true)
         {
+            print("2")
             let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             Auth.auth().signIn(with: credential) { (user, error) in
                 if error != nil {
@@ -51,7 +71,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                     return
                 }
             }
-
+            print("3")
             performSegue(withIdentifier: "loginSegue", sender: nil)
         }
         let loginManager = FBSDKLoginManager()

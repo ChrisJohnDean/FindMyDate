@@ -8,7 +8,8 @@
 
 import UIKit
 import Koloda
-import Firebase
+import FirebaseDatabase
+import FirebaseStorage
 import pop
 
 private let frameAnimationSpringBounciness: CGFloat = 9

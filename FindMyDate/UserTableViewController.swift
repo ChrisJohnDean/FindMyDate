@@ -5,7 +5,9 @@
 //  Created by Chris Dean on 2017-06-17.
 //  Copyright © 2017 Chris Dean. All rights reserved.
 //
-import Firebase
+import FirebaseDatabase
+import FirebaseStorage
+import FirebaseAuth
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit

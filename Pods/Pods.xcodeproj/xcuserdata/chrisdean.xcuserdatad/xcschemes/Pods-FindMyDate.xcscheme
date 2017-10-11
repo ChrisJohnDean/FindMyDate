@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "140C3DEA9864E9E0F48AABE7BEBA9714"
+               BlueprintIdentifier = "0013BDA9F57DA0B2DB86BDF956A5BB2A"
                BuildableName = "Pods_FindMyDate.framework"
                BlueprintName = "Pods-FindMyDate"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "140C3DEA9864E9E0F48AABE7BEBA9714"
+            BlueprintIdentifier = "0013BDA9F57DA0B2DB86BDF956A5BB2A"
             BuildableName = "Pods_FindMyDate.framework"
             BlueprintName = "Pods-FindMyDate"
             ReferencedContainer = "container:Pods.xcodeproj">

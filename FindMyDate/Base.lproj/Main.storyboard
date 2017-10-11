@@ -87,8 +87,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jPH-ZE-KXt" customClass="CustomKolodaView" customModule="FindMyDate" customModuleProvider="target">
-                                <rect key="frame" x="51" y="158" width="219" height="253"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPH-ZE-KXt" customClass="CustomKolodaView" customModule="FindMyDate" customModuleProvider="target">
+                                <rect key="frame" x="45" y="152" width="231" height="265"/>
                                 <color key="backgroundColor" red="1" green="0.73039825169999995" blue="0.71974884610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="265" id="9et-9F-PSs"/>

@@ -5,7 +5,7 @@
 //  Created by Chris Dean on 2017-06-21.
 //  Copyright © 2017 Chris Dean. All rights reserved.
 //
-import Firebase
+//import Firebase
 import UIKit
 
 class UserTableViewCell: UITableViewCell {
