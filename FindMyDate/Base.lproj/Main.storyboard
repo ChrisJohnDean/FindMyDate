@@ -129,7 +129,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="jPH-ZE-KXt" secondAttribute="trailing" constant="28" id="deK-0o-VTW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Go Dating" image="Simpleicons_Interface_arrow-of-indian-style-pointing-to-left.svg.png" id="HEK-vo-u1e"/>
+                    <tabBarItem key="tabBarItem" title="Go Dating" image="arrow" id="HEK-vo-u1e"/>
                     <navigationItem key="navigationItem" id="7qk-aO-1Vk">
                         <barButtonItem key="backBarButtonItem" title="here" id="1vN-Lg-Zar"/>
                     </navigationItem>
@@ -278,7 +278,7 @@
                             <outlet property="delegate" destination="P3y-NX-8w1" id="y0d-yt-Qaa"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Dates" image="80-256.png" id="GNz-9b-57L"/>
+                    <tabBarItem key="tabBarItem" title="Dates" image="80-256 copy" id="GNz-9b-57L"/>
                     <navigationItem key="navigationItem" title="Dates" id="gYb-Js-aJA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCH-aQ-SFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -453,9 +453,9 @@
     </scenes>
     <resources>
         <image name="007380-blue-jelly-icon-arrows-arrow4-right.png" width="420" height="420"/>
-        <image name="80-256.png" width="50" height="50"/>
+        <image name="80-256 copy" width="25" height="25"/>
         <image name="Red-Broken-Heart-Clipart.png" width="2000" height="1639"/>
-        <image name="Simpleicons_Interface_arrow-of-indian-style-pointing-to-left.svg.png" width="50" height="50"/>
+        <image name="arrow" width="25" height="25"/>
         <image name="cupid-transparent-300x204.png" width="300" height="204"/>
         <image name="hearts-xxl.png" width="256" height="256"/>
         <image name="thumbs-down-sign_1f44e.png" width="120" height="120"/>
