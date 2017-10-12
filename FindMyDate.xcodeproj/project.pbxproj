@@ -102,6 +102,8 @@
 		89A9C9C21F0C3CB900381804 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		89A9C9D11F29BE5500381804 /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
 		89A9C9D31F29BE7300381804 /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
+		89B323841F8F152B00D77C4C /* Simpleicons_Interface_arrow-of-indian-style-pointing-to-left.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simpleicons_Interface_arrow-of-indian-style-pointing-to-left.svg.png"; path = "../../../../Downloads/Simpleicons_Interface_arrow-of-indian-style-pointing-to-left.svg.png"; sourceTree = "<group>"; };
+		89B323851F8F160200D77C4C /* 80-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "80-256.png"; path = "../../../../Downloads/80-256.png"; sourceTree = "<group>"; };
 		89B6A4241F7354D300E71854 /* cupid-transparent-300x204.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cupid-transparent-300x204.png"; path = "../../../../Downloads/cupid-transparent-300x204.png"; sourceTree = "<group>"; };
 		89B6A4261F73569500E71854 /* AcceptedDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptedDateView.swift; sourceTree = "<group>"; };
 		89B6A4281F73A2CF00E71854 /* Red-Broken-Heart-Clipart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Broken-Heart-Clipart.png"; path = "../../../../Downloads/Red-Broken-Heart-Clipart.png"; sourceTree = "<group>"; };
@@ -154,6 +156,8 @@
 		8914CB9A1F4666DB0067CD56 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				89B323851F8F160200D77C4C /* 80-256.png */,
+				89B323841F8F152B00D77C4C /* Simpleicons_Interface_arrow-of-indian-style-pointing-to-left.svg.png */,
 				89B6A42C1F73A53900E71854 /* 007380-blue-jelly-icon-arrows-arrow4-right.png */,
 				89B6A4281F73A2CF00E71854 /* Red-Broken-Heart-Clipart.png */,
 				89B6A4291F73A2CF00E71854 /* hearts-xxl.png */,
