@@ -48,10 +48,12 @@ class YesOrNoViewController: UIViewController {
             if error != nil {
                 print(error)
             } else {
+                
                 print(refer)
                 print("Child Removed Correctly")
             }
         })
+        
     }
     /*
 

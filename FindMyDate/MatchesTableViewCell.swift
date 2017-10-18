@@ -10,10 +10,16 @@ import UIKit
 
 class MatchesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var imageHolder: UIImageView!
+    @IBOutlet weak var profileHolder: UIImageView!
+    //@IBOutlet weak var imageHolder: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        profileHolder?.layer.borderWidth = 1
+        profileHolder?.layer.masksToBounds = false
+        profileHolder?.layer.borderColor = UIColor.black.cgColor
+        profileHolder?.layer.cornerRadius = profileHolder.frame.height/2
+        profileHolder?.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

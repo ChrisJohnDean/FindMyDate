@@ -261,15 +261,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NaG-NS-vQU">
-                                            <rect key="frame" x="226.5" y="-2" width="91.5" height="91"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="faf-W7-mY9">
+                                            <rect key="frame" x="230" y="3" width="82" height="82"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.99820941689999998" green="0.90086156129999995" blue="0.94151276350000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="imageHolder" destination="NaG-NS-vQU" id="hr9-WR-232"/>
+                                    <outlet property="profileHolder" destination="faf-W7-mY9" id="FYt-Ud-lJb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -283,7 +283,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCH-aQ-SFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-795" y="-1198"/>
+            <point key="canvasLocation" x="-795" y="-1198.943661971831"/>
         </scene>
         <!--Yes Or No View Controller-->
         <scene sceneID="udg-Dy-iOY">
