@@ -27,10 +27,11 @@ class CustomKolodaView: KolodaView {
             
             return frame
         } else if index == 1 {
-            let horizontalMargin = -self.bounds.width * backgroundCardHorizontalMarginMultiplier
-            let width = self.bounds.width * backgroundCardScalePercent
+            //let horizontalMargin = -self.bounds.width * backgroundCardHorizontalMarginMultiplier
+            let width = self.bounds.width //* backgroundCardScalePercent
             let height = width * defaultHeightRatio
-            return CGRect(x: horizontalMargin, y: 0, width: width, height: height)
+            //return CGRect(x: horizontalMargin, y: 0, width: width, height: height)
+            return CGRect(x: 0, y: 0, width: width, height: height)
         }
         return CGRect.zero
     }

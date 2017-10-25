@@ -9,15 +9,19 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class YesOrNoViewController: UIViewController {
 
     var match: Match!
     let datesRef = Database.database().reference(withPath: "dates")
     var user: FirebaseUser!
-   
+   let storageRef = Storage.storage().reference(forURL: "gs://findmydate-1c6f4.appspot.com/")
+    
+    
     @IBOutlet weak var suitor: UILabel!
     @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var matchPic: UIImageView!
     
     @IBAction func no(_ sender: Any) {
         deleteDate()
@@ -35,6 +39,23 @@ class YesOrNoViewController: UIViewController {
         self.user = FirebaseUser(authData: Auth.auth().currentUser!)
         suitor.text = match?.suitorsName
         location.text = match?.location
+        
+        // Retrieves matches picture
+        let profilePicRef = self.storageRef.child(match.suitorsUid + "/profile_pic.jpg")
+        profilePicRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                print("an error occurred when downloading profile picture from firebase storage")
+            } else {
+                let image = UIImage(data: data!)
+                self.matchPic.image = image
+            }
+        }
+        
+        matchPic.layer.borderWidth = 1
+        matchPic.layer.masksToBounds = false
+        matchPic.layer.borderColor = UIColor.black.cgColor
+        matchPic.layer.cornerRadius = matchPic.frame.height/2
+        matchPic.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {

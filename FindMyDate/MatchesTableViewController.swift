@@ -133,20 +133,8 @@ class MatchesTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        self.user =  (authData: Auth.auth().currentUser!)
-//
-//        datesRef.child(self.user.uid).observe(.childChanged, with: { snap in
-//            guard let snapValue = snap.value as? [String: String] else {return}
-//            let match = Match(suitorsName: snapValue["Suitor's Name"]!, suitorsUid: snapValue["Suitor's Uid"]!, location: snapValue["location"]!)
-//            self.dates.append(match)
-//            let row = self.dates.count - 1
-//            let indexPath = IndexPath(row: row, section: 0)
-//            self.tableView.insertRows(at: [indexPath], with: .top)
-//            //self.tableView.reloadData()
-//        })
-//        datesRef.removeAllObservers()
-//        self.tableView.reloadData()
-
+        super.viewDidAppear(animated)
+        
         self.tableView.reloadData()
     }
     
@@ -238,21 +226,16 @@ class MatchesTableViewController: UITableViewController {
         return true
     }
     */
+//
 
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true }
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            
-            self.dates.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            self.tableView.reloadData()
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+//    // Override to support editing the table view.
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//        } else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
+//    }
     
 
     /*

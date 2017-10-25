@@ -108,7 +108,7 @@ extension MyKolodaViewController: KolodaViewDelegate {
     
     func kolodaDidSwipedCardAtIndex(_ koloda: KolodaView, index: Int, direction: SwipeResultDirection) {
         print("ahh")
-        DispatchQueue.main.async() {
+        //DispatchQueue.main.async() {
         if direction == .right {
             print("swiped right")
             let Storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -121,7 +121,7 @@ extension MyKolodaViewController: KolodaViewDelegate {
 //                self.kolodaView.reloadData()
 //            }
         }
-        }
+       // }
         self.kolodaView.reloadData()
         
         
@@ -172,7 +172,7 @@ extension MyKolodaViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let photoView = Bundle.main.loadNibNamed("KolodaPhotoView", owner: self, options: nil)?[0] as? KolodaPhotoView
-        
+     
         let user = users[Int(index)]
         
         photoView?.layer.cornerRadius = 10;
