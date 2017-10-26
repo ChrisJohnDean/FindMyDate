@@ -30,6 +30,11 @@ class MyKolodaViewController: UIViewController {
         kolodaView.dataSource = self
         kolodaView.delegate = self// as? KolodaViewDelegate
 
+        // Assigns image to nav bar and assigns back button
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
+        
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         fetchPhotos() {
             (_: [FirebaseUser]) in
@@ -174,10 +179,26 @@ extension MyKolodaViewController: KolodaViewDataSource {
         let photoView = Bundle.main.loadNibNamed("KolodaPhotoView", owner: self, options: nil)?[0] as? KolodaPhotoView
      
         let user = users[Int(index)]
+        let photoImage = photoView?.photoImage
         
+        koloda.layer.shadowColor = UIColor.black.cgColor
+        koloda.layer.shadowOpacity = 1
+        koloda.layer.shadowOffset = CGSize.zero
+        koloda.layer.shadowRadius = 10
+        koloda.layer.shadowPath = UIBezierPath(rect: (koloda.bounds)).cgPath
+        koloda.layer.cornerRadius = 10
+        //koloda.clipsToBounds = true
+        
+        photoView?.clipsToBounds = true
         photoView?.layer.cornerRadius = 10;
         photoView?.layer.masksToBounds = true;
-
+        photoView?.layer.borderWidth = 1
+        photoView?.layer.borderColor = UIColor.black.cgColor
+        
+        photoImage?.clipsToBounds = true
+        photoImage?.layer.masksToBounds = false
+        
+        
         let profilePicRef = self.storageRef.child(user.uid + "/profile_pic.jpg")
         profilePicRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if error != nil {

@@ -17,39 +17,25 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Assigns image to nav bar and assigns back button
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        // Creates Facebook login button
         let loginButton = FBSDKLoginButton()
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: 16, y: 250, width: view.frame.width - 32, height: 50)
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile"]
-//        if (FBSDKAccessToken.current()) != nil {
-//            // User is logged in, use 'accessToken' here.
-//            performSegue(withIdentifier: "loginSegue", sender: nil)
-//        }
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of facebook")
     }
-    
-    /*
-     let serialQueue = DispatchQueue(label: "com.queue.Serial")
-     for i in 1...5 {
-     serialQueue.async {
-     
-     if Thread.isMainThread{
-     print("task running in main thread")
-     }else{
-     print("task running in background thread")
-     }
-     let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
-     let _ = try! Data(contentsOf: imgURL)
-     print("\(i) completed downloading")
-     }
-     }
-     */
-    
+
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
              print(error)

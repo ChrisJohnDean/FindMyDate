@@ -284,7 +284,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Dates" image="80-256 copy" id="GNz-9b-57L"/>
-                    <navigationItem key="navigationItem" title="Dates" id="gYb-Js-aJA"/>
+                    <navigationItem key="navigationItem" id="gYb-Js-aJA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCH-aQ-SFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -40,6 +40,11 @@ class YesOrNoViewController: UIViewController {
         suitor.text = match?.suitorsName
         location.text = match?.location
         
+        // Assigns image to nav bar and assigns back button
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
+        
         // Retrieves matches picture
         let profilePicRef = self.storageRef.child(match.suitorsUid + "/profile_pic.jpg")
         profilePicRef.getData(maxSize: 1 * 1024 * 1024) { data, error in

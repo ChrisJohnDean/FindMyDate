@@ -29,61 +29,10 @@ class MatchesTableViewController: UITableViewController {
         tableView.dataSource = self
         self.user = FirebaseUser(authData: Auth.auth().currentUser!)
 
-//        datesRef.child(self.user.uid).observe(eventType: .childAdded, with: { snap in
-//            guard let snapValue = snap.value as? [String: Any] else {return}
-//            print("yo2")
-//            let uid = snap.key
-//            //let accepted = snapValue["Accepted"]! as! Bool
-//            // print(accepted)
-//            print(uid)
-//            let match = Match(suitorsName: snapValue["Suitor's Name"]! as! String, suitorsUid: snapValue["Suitor's Uid"]! as! String, location: snapValue["location"]! as! String, accepted: snapValue["Accepted"]! as! Bool)
-//            print("yo3")
-//
-//            self.dates.append(match)
-//            let row = self.dates.count - 1
-//            let indexPath = IndexPath(row: row, section: 0)
-//            self.tableView.insertRows(at: [indexPath], with: .top)
-//            self.tableView.reloadData()
-//            //print("yo3")
-//        })
-
-        
-//        datesRef.child(self.user.uid).observeSingleEvent(of: .childAdded, with: { snap in
-//            guard let snapValue = snap.value as? [String: Any] else {return}
-//            print("yo2")
-//            let uid = snap.key
-//            //let accepted = snapValue["Accepted"]! as! Bool
-//            // print(accepted)
-//            print(uid)
-//            let match = Match(suitorsName: snapValue["Suitor's Name"]! as! String, suitorsUid: snapValue["Suitor's Uid"]! as! String, location: snapValue["location"]! as! String, accepted: snapValue["Accepted"]! as! Bool)
-//            print("yo3")
-//
-//            self.dates.append(match)
-//            let row = self.dates.count - 1
-//            let indexPath = IndexPath(row: row, section: 0)
-//            self.tableView.insertRows(at: [indexPath], with: .top)
-//            self.tableView.reloadData()
-//            //print("yo3")
-//        })
-//
-
-//        datesRef.child(self.user.uid).observe(.childAdded, with: { snap in
-//            print(self.user.uid)
-//            guard let snapValue = snap.value as? [String: Any] else {return}
-//            print(snapValue)
-//            //let local = snap.value!["location"] as? String
-//            //print(local)
-//            //print(snapValue["Suitor's Uid"]!)
-//            let match = Match(suitorsName: snapValue["Suitor's Name"]! as! String, suitorsUid: snapValue["Suitor's Uid"]! as! String, location: snapValue["location"]! as! String, accepted: snapValue["Accepted"]! as! Bool)
-//
-//            self.dates.append(match)
-//            let row = self.dates.count - 1
-//            let indexPath = IndexPath(row: row, section: 0)
-//            self.tableView.insertRows(at: [indexPath], with: .top)
-//            self.tableView.reloadData()
-//
-//
-//        })
+        // Assigns image to nav bar and assigns back button
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
 
         datesRef.child(self.user.uid).observe(.childAdded, with: { snap in
             guard let snapValue = snap.value as? [String: Any] else {return}
@@ -98,11 +47,9 @@ class MatchesTableViewController: UITableViewController {
             self.tableView.insertRows(at: [indexPath], with: .top)
             self.tableView.reloadData()
 
-
         })
 
-        
-//        
+
         datesRef.child(self.user.uid).observe(.childChanged, with: { snap in
             guard let snapValue = snap.value as? [String: Any] else {return}
             let key = snap.key
@@ -182,23 +129,6 @@ class MatchesTableViewController: UITableViewController {
  
         return cell
     }
-//
-//    func fetchPic(suitorsUid: String) -> UIImage {
-//        var image = UIImage()
-//
-//        let profilePicRef = self.storageRef.child(suitorsUid + "/profile_pic.jpg")
-//        profilePicRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-//            if error != nil {
-//                print(error!.localizedDescription)
-//                print("an error occurred when downloading profile picture from firebase storage")
-//            } else {
-//                print(suitorsUid)
-//                image = UIImage(data: data!)!
-//            }
-//        }
-//        return image
-//    }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //self.tableView.reloadData()

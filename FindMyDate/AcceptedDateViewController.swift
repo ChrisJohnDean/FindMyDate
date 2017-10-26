@@ -18,6 +18,12 @@ class AcceptedDateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Assigns image to nav bar and assigns back button
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
+        
         acceptedView.location.text = match?.location
         acceptedView.matchName.text = match?.suitorsName
         acceptedView.layer.cornerRadius = 10
