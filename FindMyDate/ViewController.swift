@@ -12,16 +12,17 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    
     var fbLoginSuccess = false
+    @IBOutlet weak var navLogo: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Assigns image to nav bar and assigns back button
-        let logo = UIImage(named: "FMDIcon")
-        let imageView = UIImageView(image:logo)
-        self.navigationItem.titleView = imageView
+//        let logo = UIImage(named: "FMDIcon")
+//        let imageView = UIImageView(image:logo)
+//        self.navigationItem.titleView = imageView
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Creates Facebook login button
@@ -32,10 +33,21 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.readPermissions = ["email", "public_profile"]
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        //super.viewDidAppear(true)
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        //self.navigationItem.titleView = imageView
+        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        navLogo.titleView = imageView
+    }
+    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of facebook")
     }
 
+    
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
              print(error)
@@ -59,7 +71,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             }
             print("3")
-            performSegue(withIdentifier: "loginSegue", sender: nil)
+
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()

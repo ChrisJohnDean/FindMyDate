@@ -19,6 +19,7 @@ private var numberOfCards: Int = 5
 class MyKolodaViewController: UIViewController {
 
     @IBOutlet weak var kolodaView: CustomKolodaView!
+    @IBOutlet weak var navItem: UINavigationItem!
     
     let storageRef = Storage.storage().reference(forURL: "gs://findmydate-1c6f4.appspot.com/")
     let usersRef = Database.database().reference(withPath: "users")
@@ -30,11 +31,6 @@ class MyKolodaViewController: UIViewController {
         kolodaView.dataSource = self
         kolodaView.delegate = self// as? KolodaViewDelegate
 
-        // Assigns image to nav bar and assigns back button
-        let logo = UIImage(named: "FMDIcon")
-        let imageView = UIImageView(image:logo)
-        self.navigationItem.titleView = imageView
-        
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         fetchPhotos() {
             (_: [FirebaseUser]) in
@@ -43,7 +39,14 @@ class MyKolodaViewController: UIViewController {
 
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        //super.viewDidAppear(true)
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        //self.navigationItem.titleView = imageView
+        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        navItem.titleView = imageView
+    }
     
     func fetchPhotos(completion: @escaping (Array<FirebaseUser>) -> ()) {
         //DispatchQueue.main.async {
