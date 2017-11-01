@@ -40,7 +40,7 @@ class MyKolodaViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         let logo = UIImage(named: "FMDIcon")
         let imageView = UIImageView(image:logo)
         //self.navigationItem.titleView = imageView
