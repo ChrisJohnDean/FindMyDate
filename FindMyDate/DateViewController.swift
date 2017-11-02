@@ -17,7 +17,6 @@ class DateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var dateeName: UILabel!
     @IBOutlet weak var dateePic: UIImageView!
     
-    
     var user: FirebaseUser!
     var suitorsName: String!
     var suitorsUid: String!
@@ -31,9 +30,9 @@ class DateViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Assigns image to nav bar and assigns back button
-        //let logo = UIImage(named: "FMDIcon")
-        //let imageView = UIImageView(image:logo)
-        //self.navigationItem.titleView = imageView
+        let logo = UIImage(named: "FMDIcon")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
         
         self.location.delegate = self
         dateeName.text = user?.name
@@ -77,6 +76,7 @@ class DateViewController: UIViewController, UITextFieldDelegate {
         rightSwipe.direction = .right
         self.view.addGestureRecognizer(rightSwipe)
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)

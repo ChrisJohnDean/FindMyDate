@@ -8,23 +8,26 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var fbLoginSuccess = false
+    var authListener: AuthStateDidChangeListenerHandle!
     @IBOutlet weak var navLogo: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Assigns image to nav bar and assigns back button
-//        let logo = UIImage(named: "FMDIcon")
-//        let imageView = UIImageView(image:logo)
-//        self.navigationItem.titleView = imageView
+
+        // Checks to see if the user is already signed into Firebase
+        self.authListener = Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+        }
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
         // Creates Facebook login button
         let loginButton = FBSDKLoginButton()
         view.addSubview(loginButton)
@@ -42,11 +45,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         navLogo.titleView = imageView
     }
     
+    //Removes firebase listener from listening for current user
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(self.authListener)
+    }
+    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
         print("Did log out of facebook")
     }
-
-    
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
@@ -74,8 +82,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
+
     }
 }
 

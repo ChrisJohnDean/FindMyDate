@@ -34,41 +34,44 @@ class MatchesTableViewController: UITableViewController {
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
 
+        // Observes when a new node is added in firebase to the current users "dates"
         datesRef.child(self.user.uid).observe(.childAdded, with: { snap in
             guard let snapValue = snap.value as? [String: Any] else {return}
             //guard let getProfileURL = snapValue?["profileURL"] as? String else {return}
-            //guard let suitorsName = snapValue["Suitor's Name"] as? String else {return}
-            //print(suitorsName)
+            guard let suitorsName = snapValue["Suitor's Name"] as? String else {return}
+            print(suitorsName)
             let match = Match(suitorsName: snapValue["Suitor's Name"]! as! String, suitorsUid: snapValue["Suitor's Uid"]! as! String, location: snapValue["location"]! as! String, accepted: snapValue["Accepted"]! as! Bool)
 
             self.dates.append(match)
-            let row = self.dates.count - 1
-            let indexPath = IndexPath(row: row, section: 0)
-            self.tableView.insertRows(at: [indexPath], with: .top)
+            //let row = self.dates.count - 1
+            //let indexPath = IndexPath(row: row, section: 0)
+            //self.tableView.insertRows(at: [indexPath], with: .top)
             self.tableView.reloadData()
 
         })
 
-
+        // Observes when a node is changed in firebase in the current users "dates"
         datesRef.child(self.user.uid).observe(.childChanged, with: { snap in
             guard let snapValue = snap.value as? [String: Any] else {return}
             let key = snap.key
             
+            let match = Match(suitorsName: snapValue["Suitor's Name"]! as! String , suitorsUid: snapValue["Suitor's Uid"]! as! String, location: snapValue["location"]! as! String, accepted: snapValue["Accepted"]! as! Bool)
+            
             if let index = self.dates.index(where: {$0.suitorsUid == key}) {
                 self.dates.remove(at: index)
+                self.dates.insert(match, at: index)
                 self.tableView.reloadData()
             }
-            //self.tableView.reloadData()
-            let match = Match(suitorsName: snapValue["Suitor's Name"]! as! String , suitorsUid: snapValue["Suitor's Uid"]! as! String, location: snapValue["location"]! as! String, accepted: snapValue["Accepted"]! as! Bool)
-            self.dates.append(match)
-            let row = self.dates.count - 1
-            let indexPath = IndexPath(row: row, section: 0)
-            //self.dates.remove(at: row)
-//            self.tableView.reloadRows(at: [indexPath], with: .top)
-            self.tableView.insertRows(at: [indexPath], with: .top)
-            self.tableView.reloadData()
+
+            //self.dates.append(match)
+            
+//            let row = self.dates.count - 1
+//            let indexPath = IndexPath(row: row, section: 0)
+//            self.tableView.insertRows(at: [indexPath], with: .top)
+//            self.tableView.reloadData()
         })
         
+        // Observes when a node is removed from firebase in the current users "dates"
         datesRef.observe(.childRemoved, with: { snap in
             let key = snap.key
             if let index = self.dates.index(where: {$0.suitorsUid == key}) {
@@ -76,7 +79,8 @@ class MatchesTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         })
-        datesRef.removeAllObservers()
+        
+        //datesRef.removeAllObservers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,6 +88,10 @@ class MatchesTableViewController: UITableViewController {
         
         self.tableView.reloadData()
     }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        datesRef.removeAllObservers()
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

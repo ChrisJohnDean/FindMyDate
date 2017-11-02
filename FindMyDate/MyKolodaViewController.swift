@@ -10,7 +10,10 @@ import UIKit
 import Koloda
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 import pop
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 private let frameAnimationSpringBounciness: CGFloat = 9
 private let frameAnimationSpringSpeed: CGFloat = 16
@@ -21,22 +24,24 @@ class MyKolodaViewController: UIViewController {
     @IBOutlet weak var kolodaView: CustomKolodaView!
     @IBOutlet weak var navItem: UINavigationItem!
     
+    var user: FirebaseUser!
     let storageRef = Storage.storage().reference(forURL: "gs://findmydate-1c6f4.appspot.com/")
     let usersRef = Database.database().reference(withPath: "users")
     var users = Array<FirebaseUser>()
+    var authListener: AuthStateDidChangeListenerHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         kolodaView.dataSource = self
         kolodaView.delegate = self// as? KolodaViewDelegate
-
+      
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         fetchPhotos() {
             (_: [FirebaseUser]) in
             print("fetched urls")
         }
-
+        createUserInFirebase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +51,53 @@ class MyKolodaViewController: UIViewController {
         //self.navigationItem.titleView = imageView
         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         navItem.titleView = imageView
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(self.authListener)
+    }
+    
+    func createUserInFirebase() {
+        
+            self.authListener = Auth.auth().addStateDidChangeListener { auth, user in
+                guard let user = user else { return }
+                self.user = FirebaseUser(authData: user)
+                
+                // Download facebook profile picture to Firebase Storage
+                self.usersRef.child(self.user.uid).setValue(["name": self.user.name, "email": self.user.email,
+                                                             "profileURL": self.user.profileURL.absoluteString, "uid": self.user.uid])
+                let profilePic = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":300,"width":300,"redirect":false])
+                profilePic?.start(completionHandler: {(connection, result, error) -> Void in
+                    
+                    if(error == nil)
+                    {
+                        let dictionary = result as? NSDictionary
+                        let data = dictionary?.object(forKey: "data")
+                        
+                        let urlPic = (data as AnyObject).object(forKey: "url") as AnyObject?
+                        let url = urlPic as? String ?? ""
+                        
+                        if let imageData = NSData(contentsOf: NSURL(string: url)! as URL)
+                        {
+                            let profilePicRef = self.storageRef.child(self.user.uid + "/profile_pic.jpg")
+                            let uploadTask = profilePicRef.putData(imageData as Data, metadata:nil){
+                                metadata,error in
+                                
+                                if(error == nil)
+                                {
+                                    let downloadUrl = metadata!.downloadURL
+                                    
+                                }
+                                else
+                                {
+                                    print("error in downloading image")
+                                }
+                            }
+     
+                        }
+                    }
+                })
+            }
     }
     
     func fetchPhotos(completion: @escaping (Array<FirebaseUser>) -> ()) {
@@ -114,7 +166,16 @@ class MyKolodaViewController: UIViewController {
 
 extension MyKolodaViewController: KolodaViewDelegate {
     
-    func kolodaDidSwipedCardAtIndex(_ koloda: KolodaView, index: Int, direction: SwipeResultDirection) {
+//    func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
+//        
+//        if direction == .right {
+//            print("apple")
+//        } else if direction == .left {
+//            print("cherry")
+//        }
+//    }
+    
+    func kolodaDidSwipeCardAtIndex(_ koloda: KolodaView, index: Int, direction: SwipeResultDirection) {
         print("ahh")
         //DispatchQueue.main.async() {
         if direction == .right {
@@ -130,7 +191,7 @@ extension MyKolodaViewController: KolodaViewDelegate {
 //            }
         }
        // }
-        self.kolodaView.reloadData()
+        //self.kolodaView.reloadData()
         
         
     }
