@@ -36,18 +36,12 @@ class MatchesTableViewController: UITableViewController {
 
         // Observes when a new node is added in firebase to the current users "dates"
         datesRef.child(self.user.uid).observe(.childAdded, with: { snap in
+            
             guard let snapValue = snap.value as? [String: Any] else {return}
-            //guard let getProfileURL = snapValue?["profileURL"] as? String else {return}
-            guard let suitorsName = snapValue["Suitor's Name"] as? String else {return}
-            print(suitorsName)
             let match = Match(suitorsName: snapValue["Suitor's Name"]! as! String, suitorsUid: snapValue["Suitor's Uid"]! as! String, location: snapValue["location"]! as! String, accepted: snapValue["Accepted"]! as! Bool)
-
+            
             self.dates.append(match)
-            //let row = self.dates.count - 1
-            //let indexPath = IndexPath(row: row, section: 0)
-            //self.tableView.insertRows(at: [indexPath], with: .top)
             self.tableView.reloadData()
-
         })
 
         // Observes when a node is changed in firebase in the current users "dates"
@@ -62,13 +56,6 @@ class MatchesTableViewController: UITableViewController {
                 self.dates.insert(match, at: index)
                 self.tableView.reloadData()
             }
-
-            //self.dates.append(match)
-            
-//            let row = self.dates.count - 1
-//            let indexPath = IndexPath(row: row, section: 0)
-//            self.tableView.insertRows(at: [indexPath], with: .top)
-//            self.tableView.reloadData()
         })
         
         // Observes when a node is removed from firebase in the current users "dates"
@@ -79,7 +66,6 @@ class MatchesTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         })
-        
         //datesRef.removeAllObservers()
     }
     
@@ -131,10 +117,6 @@ class MatchesTableViewController: UITableViewController {
                 cell.contentView.bringSubview(toFront: cell.profileHolder)
             }
         }
-//        let image = self.fetchPic(suitorsUid: match.suitorsUid)
-//        cell.profileHolder.image = image
-//        cell.contentView.bringSubview(toFront: cell.profileHolder)
- 
         return cell
     }
     
