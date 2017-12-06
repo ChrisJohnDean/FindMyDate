@@ -96,6 +96,7 @@
 		897EDD461F56B09500788575 /* YesOrNoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesOrNoViewController.swift; sourceTree = "<group>"; };
 		897EDD481F57D5AB00788575 /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no.png; path = ../../../../Downloads/no.png; sourceTree = "<group>"; };
 		897EDD4A1F57D5C600788575 /* yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yes.png; path = ../../../../Downloads/yes.png; sourceTree = "<group>"; };
+		89A88F441FD79A3800E4FFDC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		89A9C9C01F0C307D00381804 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89A9C9C21F0C3CB900381804 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		89A9C9D11F29BE5500381804 /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 		8954E11E1ED7D8D600197708 = {
 			isa = PBXGroup;
 			children = (
+				89A88F441FD79A3800E4FFDC /* README.md */,
 				8954E1291ED7D8D600197708 /* FindMyDate */,
 				8954E13E1ED7D8D600197708 /* FindMyDateTests */,
 				8954E1491ED7D8D600197708 /* FindMyDateUITests */,
